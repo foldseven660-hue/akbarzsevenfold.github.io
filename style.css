@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: rgba(255, 255, 255, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --text-color: #333;
+    --accent-color: #fff;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(0, 0, 0, 0.6);
+    --text-color: #eee;
+    --accent-color: #222;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: background 0.5s ease;
+    /* Animated Gradient Light Mode */
+    background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+[data-theme="dark"] body {
+    /* Animated Gradient Dark Mode */
+    background: linear-gradient(-45deg, #141e30, #243b55, #4ca1af, #2c3e50);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.player-container {
+    width: 90%;
+    max-width: 400px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    position: relative;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.top-controls button {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.top-controls button:hover {
+    transform: scale(1.1);
+}
+
+.wake-active {
+    color: #ffd700 !important;
+}
+
+.visual-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.vinyl-record {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--text-color) 10%, #333 11%, #111 100%);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    animation: spin 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.vinyl-record::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: var(--accent-color);
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+p#artist-name {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+}
+
+input[type="range"] {
+    flex: 1;
+    margin: 0 10px;
+    appearance: none;
+    height: 5px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--text-color);
+    border-radius: 50%;
+}
+
+.main-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.main-controls button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.play-pause {
+    background: var(--text-color) !important;
+    color: var(--bg-color) !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.main-controls button:hover {
+    transform: scale(1.1);
+}
+
+.lyrics-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#toggle-lyrics {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+#lyrics-box {
+    margin-top: 10px;
+    height: 150px;
+    overflow-y: auto;
+    transition: 0.3s;
+}
+
+#lyrics-box.hidden {
+    display: none;
+}
+
+#lyrics-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    white-space: pre-wrap; /* Mempertahankan format baris .txt */
+    text-align: center;
+}
+
+/* Custom Scrollbar untuk lirik */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
