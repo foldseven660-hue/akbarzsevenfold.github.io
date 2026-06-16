@@ -3,8 +3,8 @@ const playlist = [
     {
         title: "Lagu Pertama",
         artist: "Artis A",
-        audioSrc: "music/nama1.mp3",
-        lyricSrc: "lirik/nama1.txt"
+        audioSrc: "music/Avenged Sevenfold - Dear God _ Lyrics.mp3",
+        lyricSrc: "music/dear_god.txt.txt"
     },
     {
         title: "Lagu Kedua",
